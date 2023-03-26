@@ -4,3 +4,4 @@ numpy
 pandas
 streamlit
 psycopg2
+pg_config
