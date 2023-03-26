@@ -12,7 +12,6 @@ from datetime import date
 import datetime
 from plotly.subplots import make_subplots
 from dateutil import parser
-from OAC import DB
 import matplotlib.pyplot as plt
 
 ################################################################################
@@ -96,6 +95,8 @@ def amazonUS():
     d.id = b.state_id
     '''
     amazonUS_ = prod_db.runCmd(amz_query,cursor_factory = True)
+    prod_db=psycopg2.connect(database="beta-prod-idms-db", user="postgres-ro", password="w6jduvhV6Qz9",host="pg-production-ro.netradyne.info", port="5432")
+    amazonUS_ = pd.read_sql_query(non_amz_query,con=prod_db)
     amazonUS_ = pd.DataFrame(data=amazonUS_)
     return amazonUS_
 def amazonUK():
@@ -111,7 +112,8 @@ def amazonUK():
     left join nddevicestatemaster d on
     d.id = b.state_id
     '''
-    amazonUK_ = prod_db.runCmd(amz_query,cursor_factory = True)
+    prod_db=psycopg2.connect(database="beta-prod-idms-db", user="postgres-ro", password="w6jduvhV6Qz9",host="pg-production-ro.netradyne.info", port="5432")
+    amazonUK_ = pd.read_sql_query(non_amz_query,con=prod_db)
     amazonUK_ = pd.DataFrame(data=amazonUK_)
     return amazonUK_
 for i in regionSidebar:
