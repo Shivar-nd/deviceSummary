@@ -93,7 +93,6 @@ def amazonUS():
     left join nddevicestatemaster d on
     d.id = b.state_id
     '''
-    amazonUS_ = prod_db.runCmd(amz_query,cursor_factory = True)
     prod_db=psycopg2.connect(database="beta-prod-idms-db", user="postgres-ro", password="w6jduvhV6Qz9",host="pg-production-ro.netradyne.info", port="5432")
     amazonUS_ = pd.read_sql_query(non_amz_query,con=prod_db)
     amazonUS_ = pd.DataFrame(data=amazonUS_)
