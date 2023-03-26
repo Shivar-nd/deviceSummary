@@ -4,4 +4,4 @@ numpy
 pandas
 streamlit
 psycopg2
-libpq-dev
+postgresql-devel
