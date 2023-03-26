@@ -80,7 +80,6 @@ with dashboardTitle :
         st.markdown("<h2 style = 'text-align : center; color : Cyan;'>Device Summary Dashboard</h2>", unsafe_allow_html=True)
         st.markdown("""---""")
 # Getting List of Total Amazon Last Mile Devices
-prod_db= DB.NewDB('prod')
 def amazonUS():
     amz_query = '''select b.manufacturer_device_id,a.device_id as MDID_seq,c.tenant_display_name,d.name from(
     select device_id,tenant_id from ndvehicledeviceconfigurations
